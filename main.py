@@ -41,20 +41,6 @@ if FEATURES_LEVEL == 0:
             stackoverflow_features.append(k)
     print "StackOverflow features:", stackoverflow_features
 
-# TRY WITH:
-# - different classifiers (SVM, KNN, ...?)
-# - different features (only tags, with keywords, with ??)
-# - different weights (questions vs answers)
-
-# ALSO WRITE:
-# - most interesting features
-
-#training_x, training_y, test_x, test_y = split_data_set(instances, classes)
-#
-#print "Training/Test sets build, Tr: %d(%d+%d) Te: %d(%d+%d) (ratio: %.2f)" % (
-#    len(training_y), training_y.count(Classes.INTERESTED), training_y.count(Classes.UNKNOWN),
-#    len(test_y), test_y.count(Classes.INTERESTED), test_y.count(Classes.UNKNOWN),
-#    ML_TRAINING_RATIO)
 
 mapping, X = vectorize(instances)
 
@@ -63,7 +49,6 @@ if FEATURES_LEVEL == 0:
     for k in stackoverflow_features:
         stackoverflow_tags[mapping[k]] = 1.
 
-#X = np.array(vector_instances)
 y = np.array(classes)
 kf = KFold(len(classes), k=4)
 
@@ -78,9 +63,6 @@ else:
     classifiers = {
         'stackoverflow.com': StackOverflow(stackoverflow_tags)
     }
-
-print stackoverflow_tags
-exit(1)
 
 for clf_name in classifiers:
     clf = classifiers[clf_name]
@@ -111,6 +93,21 @@ for clf_name in classifiers:
 #
 #
 #
+#
+#Classifying with stackoverflow.com
+#[[3517  456]
+# [4345 1613]]
+#51.6564293626 %
+#[[3698  274]
+# [4710 1249]]
+#49.813714631 %
+#[[3754  218]
+# [4862 1097]]
+#48.8470446078 %
+#[[3844  129]
+# [4852 1107]]
+#49.8489730165 %
+#
 #Classifying with tree
 #[[3159  814]
 # [1595 4363]]
@@ -131,8 +128,7 @@ for clf_name in classifiers:
 
 
 
-
-
+#StackOverflow features: ['wcf', 'arrays', 'osx', 'vb.net', 'ruby-on-rails', 'algorithm', 'asp.net', 'visual-studio', 'regex', 'c++', 'actionscript-3', 'jquery', 'cocoa', 'ajax', 'performance', 'sql-server', 'facebook', 'web-development', 'visual-studio-2010', 'xml', 'wpf', 'image', 'linq', 'python', 'c#', 'flash', 'string', 'json', 'web-services', 'multithreading', 'django', 'xcode', 'javascript', 'android', 'cocoa-touch', 'ruby', 'ruby-on-rails-3', 'sql', 'iphone', 'html', 'silverlight', 'java', 'flex', '.net', 'asp.net-mvc', 'mysql', 'objective-c', 'eclipse', 'php', 'linux', 'database', 'perl', 'css', 'ios', 'winforms', 'windows', 'c']
 
 #cocoa-touch 14268 0.00241194409321
 #web-development 14390 0.00243256766899

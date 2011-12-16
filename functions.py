@@ -1,4 +1,3 @@
-import random
 from lxml import etree
 from copy import copy
 
@@ -137,32 +136,6 @@ def extract_class(elem, user_id):
     if int(owner_sid) == user_id:
         return Classes.INTERESTED
     return Classes.UNKNOWN
-
-
-#def split_data_set(instances, classes):
-#    random.seed()
-#    total = len(classes)
-#    training_cnt = 0
-#    test_cnt = 0
-#    training_threshold = int(total * ML_TRAINING_RATIO)
-#    test_threshold = total - training_threshold
-#    training_instances = []
-#    training_classes = []
-#    test_instances = []
-#    test_classes = []
-#    pbar = build_pbar("Creating training/test sets", total)
-#    for i, c in zip(instances, classes):
-#        pbar.update(test_cnt + training_cnt)
-#        if training_cnt > training_threshold or (random.random() >= ML_TRAINING_RATIO and test_cnt <= test_threshold):
-#            test_instances.append(i)
-#            test_classes.append(c)
-#            test_cnt += 1
-#        else:
-#            training_instances.append(i)
-#            training_classes.append(c)
-#            training_cnt += 1
-#    pbar.finish()
-#    return training_instances, training_classes, test_instances, test_classes
 
 
 def vectorize(*vectors):

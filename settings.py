@@ -1,5 +1,5 @@
 TESTING = False
-FEATURES_LEVEL = 0
+FEATURES_LEVEL = 2
 
 if TESTING:
     DATASET_DIR = '/Users/stefanop/Desktop/092011 Meta Stack Overflow/'
